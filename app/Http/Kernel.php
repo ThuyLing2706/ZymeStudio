@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Console\Scheduling\Schedule;
 
 class Kernel extends HttpKernel
 {
@@ -64,5 +65,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'checkLogin' => \App\Http\Middleware\CheckLogin::class //thêm mới chức năng CheckLogin
     ];
 }

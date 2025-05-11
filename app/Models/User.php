@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_EDITOR = 0;
+
+    const ROLE_ADMIN = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role' // 0: editor, 1: admin
     ];
 
     /**
@@ -42,4 +47,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Relationship
+     * Thực hiện liên kết bảng dữ liệu, lấy danh sách dữ liệu con kèm theo
+     * Có thể truy vấn bằng dữ liệu con
+     */
+    /**
+     * Liên kết 1-n
+     * Sử dụng hasOne: Khóa phụ, khóa chính
+     */
+    public function files()
+    {
+        return $this->hasMany('App\Models\File', 'user_id', 'id');
+    }
+    public function salary()
+    {
+        return $this->hasMany('App\Models\Salary', 'user_id', 'id');
+    }
 }
