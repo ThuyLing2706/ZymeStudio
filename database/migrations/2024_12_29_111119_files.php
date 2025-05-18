@@ -17,7 +17,6 @@ return new class extends Migration
             $table->timestamp('deadline')->nullable();
             $table->integer('status')->default(1);
             $table->integer('priority')->default(1);
-            $table->integer('priority');
             $table->integer('synchronize')->default(0);
             $table->timestamps();
         });
